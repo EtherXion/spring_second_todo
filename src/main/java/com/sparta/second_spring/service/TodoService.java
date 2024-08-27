@@ -5,9 +5,12 @@ import com.sparta.second_spring.dto.TodoRequestDto;
 import com.sparta.second_spring.dto.TodoResponseDto;
 import com.sparta.second_spring.entity.Todo;
 import com.sparta.second_spring.repository.TodoRepository;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Component
+import java.util.List;
+
+@Service
 public class TodoService {
 
     private final TodoRepository todoRepository;
@@ -16,7 +19,7 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
-    public TodoResponseDto create(TodoRequestDto requestDto) {
+    public TodoResponseDto createTodo(TodoRequestDto requestDto) {
 
         Todo todo = new Todo(requestDto);
 
@@ -28,7 +31,35 @@ public class TodoService {
 
     }
 
+    public List<TodoResponseDto> getTodo(long id) {
+        Todo todo = findTodo(id);
+
+        // 이 부분 잘 되는지 확인
+        return todoRepository.findById(id).stream().map(TodoResponseDto::new).toList();
+    }
+
+    @Transactional
+    public Long updateTodo(Long id, TodoRequestDto requestDto) {
+        Todo todo = findTodo(id);
+
+        todo.update(requestDto);
+
+        return id;
+    }
+
+    public Long deleteTodo(Long id) {
+        Todo todo = findTodo(id);
+
+        todoRepository.delete(todo);
+
+        return id;
+    }
 
 
+    private Todo findTodo(Long id) {
+        return todoRepository.findById(id).orElseThrow(() ->
+                new IllegalArgumentException("don't find")
+        );
+    }
 
 }

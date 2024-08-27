@@ -7,20 +7,20 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="Todo")
+@Table(name="todo")
 
 @Getter
 @Setter
 @NoArgsConstructor
 
-public class Todo {
+public class Todo extends Timestamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
 
-    @Column(name = "userName", nullable = false, length = 500)
+    @Column(name = "userName", nullable = false, length = 50)
     private String userName;
     @Column(name = "todoTitle", nullable = false, length = 500)
     private String todoTitle;
