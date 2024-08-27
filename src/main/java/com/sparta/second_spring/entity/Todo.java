@@ -7,37 +7,34 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name="todo")
-
 @Getter
 @Setter
+@Table(name="todo")
 @NoArgsConstructor
-
 public class Todo extends Timestamped {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
-    @Column(name = "userName", nullable = false, length = 50)
-    private String userName;
-    @Column(name = "todoTitle", nullable = false, length = 500)
-    private String todoTitle;
-    @Column(name = "todoContent", nullable = false, length = 500)
-    private String todoContent;
+    @Column(name = "username", nullable = false, length = 50)
+    private String username;
+    @Column(name = "todotitle", nullable = false, length = 500)
+    private String todotitle;
+    @Column(name = "todocontent", nullable = false, length = 500)
+    private String todocontent;
 
 
     public Todo(TodoRequestDto requestDto) {
-        this.userName = requestDto.getUserName();
-        this.todoTitle = requestDto.getTodoTitle();
-        this.todoContent = requestDto.getTodoContent();
+        this.username = requestDto.getUsername();
+        this.todotitle = requestDto.getTodotitle();
+        this.todocontent = requestDto.getTodocontent();
     }
 
     public void update(TodoRequestDto requestDto) {
-        this.userName = requestDto.getUserName();
-        this.todoTitle = requestDto.getTodoTitle();
-        this.todoContent = requestDto.getTodoContent();
+        this.username = requestDto.getUsername();
+        this.todotitle = requestDto.getTodotitle();
+        this.todocontent = requestDto.getTodocontent();
     }
 
 

@@ -14,9 +14,9 @@ public class TodoResponseDto {
 
     public TodoResponseDto(Todo todo) {
         this.id = todo.getId();
-        this.userName = todo.getUserName();
-        this.todoTitle = todo.getTodoTitle();
-        this.todoContent = todo.getTodoContent();
+        this.userName = todo.getUsername();
+        this.todoTitle = todo.getTodotitle();
+        this.todoContent = todo.getTodocontent();
     }
 
 
