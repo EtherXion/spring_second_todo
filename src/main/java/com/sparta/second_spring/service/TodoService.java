@@ -31,6 +31,10 @@ public class TodoService {
 
     }
 
+    public List<TodoResponseDto> getAllTodos() {
+        return todoRepository.findAll().stream().map(TodoResponseDto::new).toList();
+    }
+
     public List<TodoResponseDto> getTodo(long id) {
         Todo todo = findTodo(id);
 

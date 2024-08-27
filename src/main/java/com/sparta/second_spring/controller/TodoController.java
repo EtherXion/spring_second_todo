@@ -23,6 +23,11 @@ public class TodoController {
         return todoService.createTodo(requestDto);
     }
 
+    @GetMapping("/todo")
+    public List<TodoResponseDto> getTodos() {
+        return todoService.getAllTodos();
+    }
+
     @GetMapping("/todo/{id}")
     public List<TodoResponseDto> getTodo(@PathVariable Long id) {
         return todoService.getTodo(id);
