@@ -1,6 +1,7 @@
 package com.sparta.second_spring.entity;
 
 
+import com.sparta.second_spring.dto.UsernameRequestDto;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,9 +25,14 @@ public class Username extends Timestamped {
     private String email;
 
 
-    public Username(String username, String email) {
+    public Username(UsernameRequestDto requestDto) {
         this.username = username;
         this.email = email;
+    }
+
+    public void update(UsernameRequestDto requestDto) {
+        this.username = requestDto.getUsername();
+        this.email = requestDto.getEmail();
     }
 
 }

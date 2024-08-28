@@ -17,8 +17,8 @@ public class UsernameController {
     }
 
     @PostMapping("/users")
-    public UsernameResponseDto createTodo(@RequestBody UsernameRequestDto requestDto) {
-        return usernameService.createTodo(requestDto);
+    public UsernameResponseDto createUser(@RequestBody UsernameRequestDto requestDto) {
+        return usernameService.createUser(requestDto);
     }
 
 
