@@ -14,6 +14,8 @@ public class TodoResponseDto {
     private String todoTitle;
     private String todoContent;
 
+//    private long usernameId;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime createdAt;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
@@ -28,6 +30,9 @@ public class TodoResponseDto {
 
         this.createdAt = todo.getCreatedAt();
         this.modifiedAt = todo.getModifiedAt();
+
+//        this.usernameId = todo.getUser().getId();
+
     }
 
 }

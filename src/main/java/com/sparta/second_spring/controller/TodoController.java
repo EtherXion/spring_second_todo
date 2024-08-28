@@ -25,14 +25,7 @@ public class TodoController {
     }
 
     @GetMapping("/todos")
-    public List<TodoResponseDto> getTodos(
-//            @RequestParam("page") int page,
-//            @RequestParam("size") int size,
-//            @RequestParam("sortBy") String sortBy,
-//            @RequestParam("isDesc") Boolean isDesc
-    ) {
-
-
+    public List<TodoResponseDto> getTodos() {
         return todoService.getAllTodos();
     }
 

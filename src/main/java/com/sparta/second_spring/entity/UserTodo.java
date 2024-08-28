@@ -25,4 +25,9 @@ public class UserTodo {
     @JoinColumn(name = "todo_id")
     private Todo todo;
 
+    public UserTodo(Username user, Todo todo) {
+        this.user = user;
+        this.todo = todo;
+    }
+
 }

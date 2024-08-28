@@ -4,8 +4,10 @@ package com.sparta.second_spring.service;
 import com.sparta.second_spring.dto.TodoRequestDto;
 import com.sparta.second_spring.dto.TodoResponseDto;
 import com.sparta.second_spring.entity.Todo;
+import com.sparta.second_spring.entity.UserTodo;
 import com.sparta.second_spring.entity.Username;
 import com.sparta.second_spring.repository.TodoRepository;
+import com.sparta.second_spring.repository.UsertodoRepository;
 import com.sparta.second_spring.repository.UsernameRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,23 +18,28 @@ import java.util.List;
 public class TodoService {
 
     private final TodoRepository todoRepository;
-    private final UsernameRepository usernameRepository;
+//    private final UsertodoRepository usertodoRepository;
+//    private final UsernameRepository usernameRepository;
 
-    public TodoService(TodoRepository todoRepository , UsernameRepository usernameRepository) {
+    public TodoService(TodoRepository todoRepository, UsertodoRepository usertodoRepository, UsernameRepository usernameRepository) {
         this.todoRepository = todoRepository;
-        this.usernameRepository = usernameRepository;
+//        this.usertodoRepository = usertodoRepository;
+//        this.usernameRepository = usernameRepository;
     }
 
     @Transactional
     public TodoResponseDto createTodo(TodoRequestDto requestDto) {
 
-//        Username username = usernameRepository.findById(requestDto.getUsername().orElseThrow(() ->
-//                new IllegalArgumentException("no todo")
+//        Username username = usernameRepository.findById(requestDto.getUsernameId()).orElseThrow(() ->
+//                new IllegalArgumentException("no user")
 //        );
 
         Todo todo = new Todo(requestDto);
 
         Todo savedTodo = todoRepository.save(todo);
+
+//        UserTodo userTodo = new UserTodo(username, savedTodo);
+//        usertodoRepository.save(userTodo);
 
         TodoResponseDto responseDto = new TodoResponseDto(savedTodo);
 
