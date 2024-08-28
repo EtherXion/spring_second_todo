@@ -19,6 +19,7 @@ public class TodoService {
         this.todoRepository = todoRepository;
     }
 
+    @Transactional
     public TodoResponseDto createTodo(TodoRequestDto requestDto) {
 
         Todo todo = new Todo(requestDto);
@@ -31,26 +32,29 @@ public class TodoService {
 
     }
 
+    @Transactional
     public List<TodoResponseDto> getAllTodos() {
         return todoRepository.findAll().stream().map(TodoResponseDto::new).toList();
     }
 
-    public List<TodoResponseDto> getTodo(long id) {
+    @Transactional
+    public TodoResponseDto getTodo(long id) {
         Todo todo = findTodo(id);
 
         // 이 부분 잘 되는지 확인
-        return todoRepository.findById(id).stream().map(TodoResponseDto::new).toList();
+        return new  TodoResponseDto(todo);
     }
 
     @Transactional
-    public Long updateTodo(Long id, TodoRequestDto requestDto) {
+    public TodoResponseDto updateTodo(Long id, TodoRequestDto requestDto) {
         Todo todo = findTodo(id);
 
         todo.update(requestDto);
 
-        return id;
+        return new TodoResponseDto(todo);
     }
 
+    @Transactional
     public Long deleteTodo(Long id) {
         Todo todo = findTodo(id);
 

@@ -18,27 +18,27 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @PostMapping("/todo")
+    @PostMapping("/todos")
     public TodoResponseDto createTodo(@RequestBody TodoRequestDto requestDto) {
         return todoService.createTodo(requestDto);
     }
 
-    @GetMapping("/todo")
+    @GetMapping("/todos")
     public List<TodoResponseDto> getTodos() {
         return todoService.getAllTodos();
     }
 
-    @GetMapping("/todo/{id}")
-    public List<TodoResponseDto> getTodo(@PathVariable Long id) {
+    @GetMapping("/todos/{id}")
+    public TodoResponseDto getTodo(@PathVariable Long id) {
         return todoService.getTodo(id);
     }
 
-    @PutMapping("/todo/{id}")
-    public Long updateTodo(@PathVariable Long id, @RequestBody TodoRequestDto requestDto) {
+    @PutMapping("/todos/{id}")
+    public TodoResponseDto updateTodo(@PathVariable Long id, @RequestBody TodoRequestDto requestDto) {
         return todoService.updateTodo(id, requestDto);
     }
 
-    @DeleteMapping("/todo/{id}")
+    @DeleteMapping("/todos/{id}")
     public Long deleteTodo(@PathVariable Long id) {
         return todoService.deleteTodo(id);
     }
