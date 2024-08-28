@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -23,6 +25,11 @@ public class Todo extends Timestamped {
     private String todoTitle;
     @Column(name = "todocontent", nullable = false, length = 500)
     private String todoContent;
+
+    @OneToMany(mappedBy = "todo", cascade = CascadeType.ALL, orphanRemoval = true)
+    // orphanRemoval = true 참조 끊긴 자식 엔티티 삭제 영속성 전이
+    private List<Comment> comments;
+
 
 
     public Todo(TodoRequestDto requestDto) {

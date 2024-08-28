@@ -14,8 +14,8 @@ import java.util.List;
 @Service
 public class CommentService {
 
-    private CommentRepository commentRepository;
-    private TodoRepository todoRepository; // 이걸 받아서 하는게 맞나 나중에 확인
+    private final CommentRepository commentRepository;
+    private final TodoRepository todoRepository; // 이걸 받아서 하는게 맞나 나중에 확인
 
     public CommentService(CommentRepository commentRepository , TodoRepository todoRepository) {
         this.commentRepository = commentRepository;
