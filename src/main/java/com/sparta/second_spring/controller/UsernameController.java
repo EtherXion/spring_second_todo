@@ -6,6 +6,8 @@ import com.sparta.second_spring.dto.UsernameResponseDto;
 import com.sparta.second_spring.service.UsernameService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api")
 public class UsernameController {
@@ -21,6 +23,25 @@ public class UsernameController {
         return usernameService.createUser(requestDto);
     }
 
+    @GetMapping("/users")
+    public List<UsernameResponseDto> getUsers() {
+        return usernameService.getAllUsers();
+    }
+
+    @GetMapping("/users/{id}")
+    public UsernameResponseDto getUser(@PathVariable long id) {
+        return usernameService.getUser(id);
+    }
+
+    @PutMapping("/users/{id}")
+    public Long updateUser(@PathVariable long id, @RequestBody UsernameRequestDto requestDto) {
+        return usernameService.updateUser(id, requestDto);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public Long deleteUser(@PathVariable long id) {
+        return usernameService.deleteUser(id);
+    }
 
 
 
