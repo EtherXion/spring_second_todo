@@ -18,23 +18,23 @@ public class Todo extends Timestamped {
     private long id;
 
     @Column(name = "username", nullable = false, length = 50)
-    private String username;
+    private String userName;
     @Column(name = "todotitle", nullable = false, length = 500)
-    private String todotitle;
+    private String todoTitle;
     @Column(name = "todocontent", nullable = false, length = 500)
-    private String todocontent;
+    private String todoContent;
 
 
     public Todo(TodoRequestDto requestDto) {
-        this.username = requestDto.getUsername();
-        this.todotitle = requestDto.getTodotitle();
-        this.todocontent = requestDto.getTodocontent();
+        this.userName = requestDto.getUsername();
+        this.todoTitle = requestDto.getTodoTitle();
+        this.todoContent = requestDto.getTodoContent();
     }
 
     public void update(TodoRequestDto requestDto) {
-        this.username = requestDto.getUsername();
-        this.todotitle = requestDto.getTodotitle();
-        this.todocontent = requestDto.getTodocontent();
+        this.userName = requestDto.getUsername();
+        this.todoTitle = requestDto.getTodoTitle();
+        this.todoContent = requestDto.getTodoContent();
     }
 
 
