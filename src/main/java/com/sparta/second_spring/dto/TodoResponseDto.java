@@ -1,5 +1,6 @@
 package com.sparta.second_spring.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sparta.second_spring.entity.Todo;
 import lombok.Getter;
 
@@ -13,7 +14,9 @@ public class TodoResponseDto {
     private String todoTitle;
     private String todoContent;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime createdAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime modifiedAt;
 
 
