@@ -20,6 +20,10 @@ public class Todo extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+//    @ManyToOne
+//    @JoinColumn(name = "username_id")
+//    private Username userId;
+
     @Column(name = "username", nullable = false, length = 50)
     private String userName;
     @Column(name = "todotitle", nullable = false, length = 500)
@@ -35,15 +39,14 @@ public class Todo extends Timestamped {
     private List<UserTodo> usertodo = new ArrayList<>();
 
 
-
     public Todo(TodoRequestDto requestDto) {
+//        this.userId = userid;
         this.userName = requestDto.getUsername();
         this.todoTitle = requestDto.getTodoTitle();
         this.todoContent = requestDto.getTodoContent();
     }
 
     public void update(TodoRequestDto requestDto) {
-        this.userName = requestDto.getUsername();
         this.todoTitle = requestDto.getTodoTitle();
         this.todoContent = requestDto.getTodoContent();
     }
