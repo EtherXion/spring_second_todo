@@ -4,6 +4,7 @@ package com.sparta.second_spring.controller;
 import com.sparta.second_spring.dto.TodoRequestDto;
 import com.sparta.second_spring.dto.TodoResponseDto;
 import com.sparta.second_spring.service.TodoService;
+import org.hibernate.query.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +25,14 @@ public class TodoController {
     }
 
     @GetMapping("/todos")
-    public List<TodoResponseDto> getTodos() {
+    public List<TodoResponseDto> getTodos(
+//            @RequestParam("page") int page,
+//            @RequestParam("size") int size,
+//            @RequestParam("sortBy") String sortBy,
+//            @RequestParam("isDesc") Boolean isDesc
+    ) {
+
+
         return todoService.getAllTodos();
     }
 

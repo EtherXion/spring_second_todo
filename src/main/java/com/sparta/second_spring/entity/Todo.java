@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,6 +30,9 @@ public class Todo extends Timestamped {
     @OneToMany(mappedBy = "todo", cascade = CascadeType.ALL, orphanRemoval = true)
     // orphanRemoval = true 참조 끊긴 자식 엔티티 삭제 영속성 전이
     private List<Comment> comments;
+
+    @OneToMany(mappedBy = "todo")
+    private List<UserTodo> usertodo = new ArrayList<>();
 
 
 

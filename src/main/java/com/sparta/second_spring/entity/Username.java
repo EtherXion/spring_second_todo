@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -23,6 +26,9 @@ public class Username extends Timestamped {
 
     @Column(name = "email", nullable = false, length = 100)
     private String email;
+
+    @OneToMany(mappedBy = "username")
+    private List<UserTodo> usertodo = new ArrayList<>();
 
 
     public Username(UsernameRequestDto requestDto) {

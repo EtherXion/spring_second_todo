@@ -34,6 +34,9 @@ public class TodoService {
 
     @Transactional
     public List<TodoResponseDto> getAllTodos() {
+
+
+
         return todoRepository.findAll().stream().map(TodoResponseDto::new).toList();
     }
 
