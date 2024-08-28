@@ -1,6 +1,7 @@
 package com.sparta.second_spring.dto;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sparta.second_spring.entity.Username;
 import lombok.Getter;
 
@@ -13,7 +14,9 @@ public class UsernameResponseDto {
     private String username;
     private String email;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime createdAt;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private LocalDateTime modifiedAt;
 
     public UsernameResponseDto(Username username){

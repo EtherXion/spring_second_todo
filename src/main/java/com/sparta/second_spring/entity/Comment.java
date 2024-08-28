@@ -23,6 +23,9 @@ public class Comment extends Timestamped {
     @Column(name = "commentcontent", nullable = false, length = 500)
     private String commentContent;
 
+    @ManyToOne
+    @JoinColumn(name = "todo_id")
+    private Todo todo;
 
 
     public Comment(CommentRequestDto requestDto) {

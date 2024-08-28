@@ -3,7 +3,9 @@ package com.sparta.second_spring.service;
 import com.sparta.second_spring.dto.CommentRequestDto;
 import com.sparta.second_spring.dto.CommentResponseDto;
 import com.sparta.second_spring.entity.Comment;
+import com.sparta.second_spring.entity.Todo;
 import com.sparta.second_spring.repository.CommentRepository;
+import com.sparta.second_spring.repository.TodoRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,13 +15,19 @@ import java.util.List;
 public class CommentService {
 
     private CommentRepository commentRepository;
+    private TodoRepository todoRepository; // 이걸 받아서 하는게 맞나 나중에 확인
 
-    public CommentService(CommentRepository commentRepository) {
+    public CommentService(CommentRepository commentRepository , TodoRepository todoRepository) {
         this.commentRepository = commentRepository;
+        this.todoRepository = todoRepository;
     }
 
     @Transactional
     public CommentResponseDto createComment(CommentRequestDto requestDto) {
+
+//        Todo todo = todoRepository.findById(requestDto.getTodoId()).orElseThrow(() ->
+//                new IllegalArgumentException("no todo")
+//        );
 
         Comment comment = new Comment(requestDto);
 
@@ -33,6 +41,7 @@ public class CommentService {
 
     @Transactional
     public List<CommentResponseDto> getAllComments() {
+
         return commentRepository.findAll().stream().map(CommentResponseDto::new).toList();
     }
 
@@ -44,12 +53,12 @@ public class CommentService {
     }
 
     @Transactional
-    public Long updateComment(Long id, CommentRequestDto requestDto) {
+    public CommentResponseDto updateComment(Long id , CommentRequestDto requestDto) {
         Comment comment = findComment(id);
 
         comment.update(requestDto);
 
-        return id;
+        return new CommentResponseDto(comment);
     }
 
     @Transactional

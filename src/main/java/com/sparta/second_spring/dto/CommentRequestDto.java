@@ -8,4 +8,6 @@ public class CommentRequestDto {
     private long id;
     private String userName;
     private String commentContent;
+
+    private Long todoId;
 }
