@@ -6,8 +6,8 @@ import lombok.Getter;
 public class CommentRequestDto {
 
     private long id;
-    private String userName;
-    private String commentContent;
+    private String username;
+    private String commentcontent;
 
     private Long todoId;
 }

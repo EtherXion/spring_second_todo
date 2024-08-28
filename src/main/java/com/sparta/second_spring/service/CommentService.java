@@ -25,11 +25,13 @@ public class CommentService {
     @Transactional
     public CommentResponseDto createComment(CommentRequestDto requestDto) {
 
-//        Todo todo = todoRepository.findById(requestDto.getTodoId()).orElseThrow(() ->
-//                new IllegalArgumentException("no todo")
-//        );
+        Todo todo = todoRepository.findById(requestDto.getTodoId()).orElseThrow(() ->
+                new IllegalArgumentException("no todo")
+        );
 
         Comment comment = new Comment(requestDto);
+
+        comment.setTodo(todo); // 외래키 설정
 
         Comment savedComment = commentRepository.save(comment);
 
