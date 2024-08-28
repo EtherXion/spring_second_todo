@@ -26,8 +26,8 @@ public class Username extends Timestamped {
 
 
     public Username(UsernameRequestDto requestDto) {
-        this.username = username;
-        this.email = email;
+        this.username = requestDto.getUsername();
+        this.email = requestDto.getEmail();
     }
 
     public void update(UsernameRequestDto requestDto) {
