@@ -44,15 +44,6 @@ public class UsernameService {
     }
 
     @Transactional
-    public Long updateUser(long id, UsernameRequestDto requestDto) {
-        Username username = findUser(id);
-
-        username.update(requestDto);
-
-        return id;
-    }
-
-    @Transactional
     public Long deleteUser(long id) {
         Username username = findUser(id);
 
