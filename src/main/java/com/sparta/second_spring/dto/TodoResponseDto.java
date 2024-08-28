@@ -27,15 +27,6 @@ public class TodoResponseDto {
         this.modifiedAt = todo.getModifiedAt();
     }
 
-
-    public TodoResponseDto(Long id, String userName, String todoTitle, String todoContent){
-        this.id = Math.toIntExact(id);
-        this.userName = userName;
-        this.todoTitle = todoTitle;
-        this.todoContent = todoContent;
-    }
-
-
 }
 
 
