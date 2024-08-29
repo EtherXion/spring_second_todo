@@ -20,9 +20,10 @@ public class Todo extends Timestamped {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    private Username user;
+    // 유저명 고유 식별자로
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private Username user;
 
     @Column(name = "username", nullable = false, length = 50)
     private String userName;
@@ -40,7 +41,6 @@ public class Todo extends Timestamped {
 
 
     public Todo(TodoRequestDto requestDto) {
-//        this.user = user;
         this.userName = requestDto.getUsername();
         this.todoTitle = requestDto.getTodoTitle();
         this.todoContent = requestDto.getTodoContent();

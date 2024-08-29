@@ -2,12 +2,13 @@ package com.sparta.second_spring.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sparta.second_spring.entity.Todo;
+import com.sparta.second_spring.entity.Username;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Getter
-public class TodoResponseDto {
+public class GetTodoResponseDto {
 
     private long id;
     private String userName;
@@ -24,7 +25,8 @@ public class TodoResponseDto {
     private LocalDateTime modifiedAt;
 
 
-    public TodoResponseDto(Todo todo) {
+    public GetTodoResponseDto(Todo todo) {
+
         this.id = todo.getId();
         this.userName = todo.getUserName();
         this.todoTitle = todo.getTodoTitle();
@@ -39,6 +41,20 @@ public class TodoResponseDto {
 
     }
 
+    @Getter
+    public static class GetTodoUserDto {
+        private long id;
+        private String userName;
+        private String email;
+
+        public GetTodoUserDto(Username user) {
+            this.id = user.getId();
+            this.userName = user.getUsername();
+            this.email = user.getEmail();
+        }
+
+    }
+
+
+
 }
-
-
